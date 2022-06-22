@@ -38,6 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('admin/users', 'UserController::index', ['filter' => 'permission:manage-user']);
 $routes->get('admin/users', 'UserController::index', ['filter' => 'role:admin,superadmin']);
+$routes->get('/pasien', 'Pasien::index');
 
 /*
  * --------------------------------------------------------------------
