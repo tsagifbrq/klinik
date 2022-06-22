@@ -6,18 +6,25 @@ use CodeIgniter\Model;
 
 class PasienModel extends Model
 {
-
-    public function getHasil()
-    {
-        $builder = $this->db->table('hasil');
-        return $builder->get();
-    }
+    protected $table = "pasien";
+    protected $returnType = "object";
+    protected $useTimestamps = true;
+    protected $allowedFields = [
+        'id',
+        'nik',
+        'nama',
+        'nomor_telepon',
+        'tempat_lahir',
+        'tgl_lahir',
+        'pemeriksaan',
+        'permintaan',
+        'jenis_kelamin',
+    ];
 
     public function getPasien()
     {
         $builder = $this->db->table('pasien');
         $builder->select('*');
-        $builder->join('hasil', 'hasil_id = pasien_hasil_id', 'left');
         return $builder->get();
     }
 
